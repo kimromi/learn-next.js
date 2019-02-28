@@ -1,0 +1,7 @@
+{
+  "name": "learn-next.js",
+  "dependencies": {
+    "next": "^8.0.3"
+  },
+  "devDependencies": {}
+}
