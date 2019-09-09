@@ -1,4 +1,5 @@
 import React from 'react'
+import "../assets/stylesheets/index.scss"
 
 export default class extends React.Component {
   constructor() {
