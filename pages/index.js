@@ -8,7 +8,10 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div>hello { this.where }!</div>
+      <div>
+        <h1>hello { this.where }!</h1>
+        <img src="static/mondorian.jpg" />
+      </div>
     )
   }
 }
