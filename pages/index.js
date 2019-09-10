@@ -3,6 +3,8 @@ import Head from 'next/head'
 
 import "../assets/stylesheets/index.scss"
 
+import Layout from '../components/layouts/layout'
+
 export default class extends React.Component {
   constructor() {
     super()
@@ -11,15 +13,10 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div>
-        <Head>
-          <title>Index page</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
-
+      <Layout title="hello!!!!!!!!!!">
         <h1>hello { this.where }!</h1>
         <img src="static/mondorian.jpg" />
-      </div>
+      </Layout>
     )
   }
 }
