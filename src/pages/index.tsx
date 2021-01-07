@@ -1,10 +1,13 @@
 import Link from 'next/link';
 
-const externalLinks = [
+import type { GetStaticProps } from 'next';
+import type { TPost } from './blog/[id]';
+
+const externalLinks: TPost[] = [
   {publishedAt: '2021-01-06 23:18:30', title: 'external1', href: 'https://github.com/kimromi'}
 ];
 
-export default function Home({posts}) {
+export default function Home({ posts }: { posts: TPost[] }) {
   return (
     <div>
       <ul>
@@ -29,15 +32,14 @@ export default function Home({posts}) {
 
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async () => {
-  const key = {
-    headers: {'X-API-KEY': process.env.API_KEY},
-  };
-  const data = await fetch('https://kimromi.microcms.io/api/v1/blog', key)
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await fetch('https://kimromi.microcms.io/api/v1/blog', {
+    headers: {'X-API-KEY': process.env.API_KEY || ''},
+  })
     .then(res => res.json())
     .catch(() => null);
 
-  const posts = data.contents.concat(externalLinks)
+  const posts: TPost[] = data.contents.concat(externalLinks)
   posts.sort((a, b) => {
     if (Date.parse(a.publishedAt) < Date.parse(b.publishedAt)) {
       return 1;
